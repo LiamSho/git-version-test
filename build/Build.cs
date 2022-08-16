@@ -1,7 +1,15 @@
 using Nuke.Common;
+using Nuke.Common.CI.GitHubActions;
 using Nuke.Common.Tools.GitVersion;
 using Serilog;
 
+[GitHubActions(
+    name: "test",
+    image: GitHubActionsImage.UbuntuLatest,
+    OnWorkflowDispatchOptionalInputs = new[] { "r" },
+    OnPushTags = new[] { "v*" },
+    InvokedTargets = new[] { nameof(ShowVersion) }
+)]
 public class Build : NukeBuild
 {
     [GitVersion] GitVersion _gitVersion;
