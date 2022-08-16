@@ -1,14 +1,14 @@
 next-version: 1.0
 branches:
   main:
-    regex: ^master$|^main$
+    regex: main
     mode: ContinuousDelivery
     tag: ""
     increment: Patch
     is-mainline: true
     source-branches: ["dev"]
   dev:
-    regex: ^dev(elop)?(ment)?$
+    regex: dev
     mode: ContinuousDeployment
     tag: alpha
     increment: Minor
